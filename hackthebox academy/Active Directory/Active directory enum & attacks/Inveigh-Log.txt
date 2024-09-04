@@ -1,0 +1,40 @@
+[*] Inveigh 2.0.11 [Started 2024-09-02T23:15:24 | PID 5194]
+[ ] Packet Sniffer
+[+] Listener Addresses [IP 0.0.0.0 | IPv6 ::]
+[+] Spoofer Reply Addresses [IP 192.168.81.165 | IPv6 2400:9800:10:3937:ff05:81e:292e:41d5]
+[+] Spoofer Options [Repeat Enabled | Local Attacks Disabled]
+[ ] DHCPv6
+[+] DNS Listener [Type A]
+[ ] ICMPv6
+[+] LLMNR Listener [Type A]
+[ ] MDNS
+[ ] NBNS
+[+] HTTP Listener [HTTPAuth NTLM | WPADAuth NTLM | Port 80]
+[ ] HTTPS
+[+] WebDAV [WebDAVAuth NTLM]
+[ ] Proxy
+[+] LDAP Listener [Port 389]
+[+] SMB Listener [Port 445]
+[+] File Output [/home/aexon/Desktop/learn-anything/hackthebox academy/Active Directory/Active directory enum & attacks]
+[+] Previous Session Files (Not Found)
+[*] Press ESC to enter/exit interactive console
+[*] Inveigh 2.0.11 [Started 2024-09-02T23:28:34 | PID 5584]
+[ ] Packet Sniffer
+[+] Listener Addresses [IP 0.0.0.0 | IPv6 ::]
+[+] Spoofer Reply Addresses [IP 192.168.81.165 | IPv6 2400:9800:10:3937:ff05:81e:292e:41d5]
+[+] Spoofer Options [Repeat Enabled | Local Attacks Disabled]
+[ ] DHCPv6
+[+] DNS Listener [Type A]
+[ ] ICMPv6
+[+] LLMNR Listener [Type A]
+[ ] MDNS
+[ ] NBNS
+[+] HTTP Listener [HTTPAuth NTLM | WPADAuth NTLM | Port 80]
+[ ] HTTPS
+[+] WebDAV [WebDAVAuth NTLM]
+[ ] Proxy
+[+] LDAP Listener [Port 389]
+[+] SMB Listener [Port 445]
+[+] File Output [/home/aexon/Desktop/learn-anything/hackthebox academy/Active Directory/Active directory enum & attacks]
+[+] Previous Session Files [Imported]
+[*] Press ESC to enter/exit interactive console
