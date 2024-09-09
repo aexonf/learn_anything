@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "hackthebox academy/Active Directory/Active directory enum & attacks/Active Directory Enumeration & Attacks.md",
+                "file": "PortSwigger/GraphQL/GraphQL.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "hackthebox academy/Active Directory/Active directory enum & attacks/Active Directory Enumeration & Attacks.md",
+                "file": "PortSwigger/GraphQL/GraphQL.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "hackthebox academy/Active Directory/Active directory enum & attacks/Active Directory Enumeration & Attacks.md",
+                "file": "PortSwigger/GraphQL/GraphQL.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "hackthebox academy/Active Directory/Active directory enum & attacks/Active Directory Enumeration & Attacks.md"
+                "file": "PortSwigger/GraphQL/GraphQL.md"
               }
             }
           }
@@ -148,6 +148,10 @@
   },
   "active": "7ddafd65a7759075",
   "lastOpenFiles": [
+    "PortSwigger/CSRF/CSRF.md",
+    "PortSwigger/GraphQL/GraphQL.md",
+    "PortSwigger/GraphQL",
+    "hackthebox academy/Active Directory/Active directory enum & attacks/Active Directory Enumeration & Attacks.md",
     "hackthebox academy/Active Directory/Active directory enum & attacks/20240904011213_users.json",
     "hackthebox academy/Active Directory/Active directory enum & attacks/20240904011213_groups.json",
     "hackthebox academy/Active Directory/Active directory enum & attacks/20240904011213_domains.json",
@@ -157,10 +161,7 @@
     "hackthebox academy/Active Directory/Active directory enum & attacks/hash_wley.txt",
     "hackthebox academy/Active Directory/Active directory enum & attacks/hash_backupagent.txt",
     "hackthebox academy/Active Directory/Active directory enum & attacks/valid_ad_users",
-    "hackthebox academy/Active Directory/Active directory enum & attacks/jsmith.txt",
-    "hackthebox academy/Active Directory/Active directory enum & attacks",
     "hackthebox academy/bug hunter/Hydra/Hydra.md",
-    "hackthebox academy/Active Directory/Active directory enum & attacks/Active Directory Enumeration & Attacks.md",
     "hackthebox academy/bug hunter/server side attack/server side attack.md"
   ]
 }
